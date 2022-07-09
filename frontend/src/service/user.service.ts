@@ -29,7 +29,7 @@ class AuthService {
   }
 
   public async delete(id: number): Promise<UserModel> {
-    const url = `${this.ENDPOINT}/Delete/${id}`;
+    const url = `${this.ENDPOINT}/delete/${id}`;
     return request.delete<UserModel>(url).then((res) => {
       return res.data;
     });
@@ -38,13 +38,6 @@ class AuthService {
   public async update(data: AddOrEditUserModel): Promise<AddOrEditUserModel> {
     const url = `${this.ENDPOINT}`;
     return request.put<AddOrEditUserModel>(url, data ).then((res) => {
-      return res.data;
-    });
-  }
-
-  public async updateProfile(data: UserModel): Promise<UserModel> {
-    const url = `${this.ENDPOINT}`;
-    return request.put<UserModel>(url, data ).then((res) => {
       return res.data;
     });
   }

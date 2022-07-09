@@ -9,29 +9,26 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MainNavigation from "./components/MainNavigation";
 import { AuthWrapper } from "./context/auth";
-import { CartWrapper } from "./context/cart";
 
 const App: React.FC = () => {
-	return (
-		<ThemeProvider theme={theme}>
-			<React.Suspense fallback={<></>}>
-				<BrowserRouter>
-					<AuthWrapper>
-						<CartWrapper>
-							<div className="wrapper">
-								<Header />
-								<main>
-									<MainNavigation />
-								</main>
-								<Footer />
-							</div>
-						</CartWrapper>
-					</AuthWrapper>
-					<ToastContainer />
-				</BrowserRouter>
-			</React.Suspense>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={theme}>
+      <React.Suspense fallback={<></>}>
+        <BrowserRouter>
+          <AuthWrapper>
+            <div className="wrapper">
+              <Header />
+              <main>
+                <MainNavigation />
+              </main>
+              <Footer />
+            </div>
+          </AuthWrapper>
+          <ToastContainer />
+        </BrowserRouter>
+      </React.Suspense>
+    </ThemeProvider>
+  );
 };
 
 export default App;

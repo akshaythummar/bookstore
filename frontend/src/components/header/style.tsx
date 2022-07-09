@@ -311,8 +311,6 @@ const headerStyle = makeStyles((theme) => ({
         },
       },
       "& .header-search-wrapper": {
-        position:"relative",
-        zIndex:"2",
         backgroundColor: colors.grayBg,
         padding: "20px 0",
         "@media(max-width:1199px)": {
@@ -405,7 +403,7 @@ const headerStyle = makeStyles((theme) => ({
             flex: "1",
             position: "relative",
             "& .product-listing": {
-              // display: "none",
+              display: "none",
               position: "absolute",
               left: "0",
               right: "0",

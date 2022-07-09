@@ -17,14 +17,14 @@ class CartService {
  }
 
  public async getList(id: number): Promise<GetCart> {
-  const url = `${this.ENDPOINT}/list?UserId=${id}`;
+  const url = `${this.ENDPOINT}/list?userId=${id}`;
   return request.get<GetCart>(url).then((res) => {
    return res.data;
   });
  }
 
  public async updateItem(data: CartModel): Promise<CartModel> {
-    const url = `${this.ENDPOINT}/Update`;
+    const url = `${this.ENDPOINT}/update`;
     return request
      .put<CartModel>(url, data)
      .then((res) => {

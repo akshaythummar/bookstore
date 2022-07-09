@@ -28,7 +28,7 @@ const Book: React.FC = () => {
   const classes = productStyle();
   const [filters, setFilters] = useState<FilterModel>(defaultFilter);
   const [bookRecords, setBookRecords] = useState<BaseList<BookModel[]>>({
-    records: [],
+    results: [],
     totalRecords: 0,
   });
   const [open, setOpen] = useState<boolean>(false);
@@ -43,14 +43,14 @@ const Book: React.FC = () => {
   const getAllCategories = async (): Promise<void> => {
     await categoryService.getAll({ pageIndex: 0 }).then((res) => {
       if (res) {
-        setCategories(res.records);
+        setCategories(res.results);
       }
     });
   };
 
   const books: BookModel[] = useMemo((): BookModel[] => {
-    if (bookRecords?.records) {
-      return bookRecords.records;
+    if (bookRecords?.results) {
+      return bookRecords.results;
     }
     return [];
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,7 +82,7 @@ const Book: React.FC = () => {
       toast.success(Shared.messages.DELETE_SUCCESS);
       setOpen(false);
       setFilters({ ...filters, pageIndex: 1 });
-    }).catch(e=>toast.error(Shared.messages.DELETE_FAIL));
+    }).catch(e=>toast.error(Shared.messages.DELETE_SUCCESS));
   };
   return (
     <div className={classes.productWrapper}>
@@ -160,7 +160,7 @@ const Book: React.FC = () => {
                   </TableCell>
                 </TableRow>
               ))}
-              {!bookRecords?.records.length && (
+              {!bookRecords?.results.length && (
                 <TableRow className="TableRow">
                   <TableCell colSpan={5} className="TableCell">
                     <Typography align="center" className="noDataText">
@@ -175,7 +175,7 @@ const Book: React.FC = () => {
         <TablePagination
           rowsPerPageOptions={RecordsPerPage}
           component="div"
-          count={bookRecords?.records.length ? bookRecords.totalRecords : 0}
+          count={bookRecords?.results.length ? bookRecords.totalRecords : 0}
           rowsPerPage={filters.pageSize || 0}
           page={filters.pageIndex - 1}
           onPageChange={(e, newPage) => {

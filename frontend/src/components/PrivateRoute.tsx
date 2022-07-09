@@ -6,6 +6,7 @@ import { RoutePaths } from '../utils/enum';
 
 const PrivateRoute = ({ component: Component, path }: RouteProps) => {
   const authContext = useAuthContext();
+  console.log("test: ", authContext.user)
   if (!authContext.user.id) {
     return <Redirect to={RoutePaths.Login} />;
   }

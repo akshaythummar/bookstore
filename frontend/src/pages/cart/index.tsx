@@ -32,10 +32,10 @@ const Cart: React.FC = () => {
 	};
 
 	useEffect(() => {
-		setBookList(cartContext.cartData.records);
+		setBookList(cartContext.cartData.results);
 		setItemsInCart(cartContext.cartData.totalRecords);
-		getTotalPrice(cartContext.cartData.records);
-	}, [cartContext.cartData.records, cartContext.cartData.totalRecords]);
+		getTotalPrice(cartContext.cartData.results);
+	}, [cartContext.cartData.results, cartContext.cartData.totalRecords]);
 
 	const removeItem = async (id: number) => {
 		try {
@@ -85,7 +85,7 @@ const Cart: React.FC = () => {
 			if (userCart.totalRecords) {
 				try {
 					let cartIds: number[] = [];
-					userCart.records.forEach((element: CartList) => {
+					userCart.results.forEach((element: CartList) => {
 						cartIds.push(element.id);
 					});
 					const newOrder: OrderAddModel = {

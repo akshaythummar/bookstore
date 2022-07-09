@@ -2,7 +2,7 @@ import { OrderAddModel } from "../models/OrderModel";
 import request from "./request";
 
 class OrderService {
-	ENDPOINT = "api/Order";
+	ENDPOINT = "api/order";
 
 	public async placeOrder(order: OrderAddModel): Promise<OrderAddModel> {
 		const url = `${this.ENDPOINT}/add`;

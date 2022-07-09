@@ -15,6 +15,6 @@ export class CartList {
 }
 
 export class GetCart {
- records!: CartList[];
+ results!: CartList[];
  totalRecords!: number;
 }

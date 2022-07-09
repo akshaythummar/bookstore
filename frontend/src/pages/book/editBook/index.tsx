@@ -42,7 +42,7 @@ const EditBook: React.FC = () => {
 	useEffect(() => {
 		if (id) getBookById();
 		categoryService.getAll({ pageIndex: 0 }).then((res) => {
-			setCategories(res.records);
+			setCategories(res.results);
 		});
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
@@ -81,7 +81,7 @@ const EditBook: React.FC = () => {
 				);
 				history.push("/book");
 			})
-			.catch((e) => toast.error(Shared.messages.UPDATED_FAIL));
+			.catch((e) => toast.error(Shared.messages.UPDATED_SUCCESS));
 	};
 
 	const onSelectFile = (
